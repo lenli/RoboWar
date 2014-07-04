@@ -1,33 +1,29 @@
 //
-//  LLRobot.m
+//  LCLSniperBot.m
 //  RobotWar
 //
-//  Created by Leonard Li on 7/1/14.
+//  Created by Leonard Li on 7/4/14.
 //  Copyright (c) 2014 Apportable. All rights reserved.
 //
 
-#import "LLRobot.h"
+#import "LCLSniperBot.h"
+
 typedef NS_ENUM(NSInteger, RobotPositionState) {
     RobotPositionStateDefault,
-    RobotPositionStateStrafe,
-    RobotPositionStateFoundWall,
-    RobotPositionStateCircle,
-    RobotPositionStateCharge
+    RobotPositionStateCharge,
+    RobotPositionStateShowdown
 };
 
-typedef NS_ENUM(NSInteger, EnemyState) {
-    EnemyStateUnknown,
-    EnemyStateStill
-};
-
-
-@implementation LLRobot {
+@implementation LCLSniperBot {
     RobotPositionState _lastPositionState;
     RobotPositionState _currentPositionState;
-    NSInteger myHitCount;
-    
+    NSInteger _myHitCount;
+    NSInteger _shotsFired;
+    NSInteger _shotsTaken;
+    BOOL _isInEvasiveManuevers;
+
     // Enemy Data
-    NSInteger enemyHitCount;
+    NSInteger _enemyHitCount;
     CGFloat _enemySlope;
     CGPoint _lastKnownPosition;
     NSDate *_lastKnownPositionTimestamp;
@@ -36,61 +32,58 @@ typedef NS_ENUM(NSInteger, EnemyState) {
 
 - (void)run {
     while (true) {
-        if (myHitCount < enemyHitCount && [self enemyNotMoving]) {
-            [self showdown];
+        if (_myHitCount < _enemyHitCount && [self enemyNotMoving]) {
+            _lastPositionState = RobotPositionStateShowdown;
         }
-        
         switch (_currentPositionState) {
             case RobotPositionStateDefault:
                 _lastPositionState = RobotPositionStateDefault;
+                NSUInteger randomDistance = arc4random_uniform(10) + 1;
+                [self moveAhead:randomDistance];
+                _currentPositionState = RobotPositionStateCharge;
+                break;
+            case RobotPositionStateCharge:
+                //                NSLog(@"RobotPositionStateCharge");
+                _lastPositionState = RobotPositionStateCharge;
                 [self moveAhead:10];
                 if (_lastKnownPosition.x > 0) {
                     [self fireAhead];
                     _currentPositionState = RobotPositionStateCharge;
                 }
-                _currentPositionState = RobotPositionStateDefault;
-                
                 break;
-            case RobotPositionStateCircle:
-                [self circleStrafeBasicRight];
-                break;
-            case RobotPositionStateFoundWall:
-                _lastPositionState = RobotPositionStateFoundWall;
-                if (_lastPositionState == RobotPositionStateDefault) {
-                    [self turnGunLeft:90];
-                }
-                [self turnRobotRight:90];
-                [self moveBack:15];
-                
-                _currentPositionState = RobotPositionStateStrafe;
-                break;
-            case RobotPositionStateStrafe:
-                _lastPositionState = RobotPositionStateStrafe;
-                [self moveBack:50];
-                break;
-            case RobotPositionStateCharge:
-                _lastPositionState = RobotPositionStateCharge;
-                [self moveAhead:10];
+            case RobotPositionStateShowdown:
+                NSLog(@"RobotPositionStateShowdown");
+                _lastPositionState = RobotPositionStateShowdown;
+                [self showdown];
                 break;
         }
     }
 }
 
 - (void)hitWall:(RobotWallHitDirection)hitDirection hitAngle:(CGFloat)angle {
-    _currentPositionState = RobotPositionStateFoundWall;
+    [self cancelActiveAction];
+    [self turnRobotRight:180];
+    [self moveAhead:10];
+    [self aimAtPosition:[self arenaCenterPoint]];
 }
 
 - (void)gotHit {
-    myHitCount++;
-    if (myHitCount > enemyHitCount) {
+    [self cancelActiveAction];
+    _myHitCount++;
+    _shotsTaken++;
+    if ((_myHitCount > _enemyHitCount && !_isInEvasiveManuevers)|| _shotsTaken > 2) {
+        _isInEvasiveManuevers = YES;
+        _shotsTaken = 0;
         [self moveAhead:100];
-        [self moveBack:200];
+        [self fireAhead];
+        _isInEvasiveManuevers = NO;
     }
-    NSLog(@"Hit");
 }
 
 - (void)bulletHitEnemy:(Bullet *)bullet {
-    enemyHitCount++;
+    _shotsFired = 0;
+    _shotsTaken = 0;
+    _enemyHitCount++;
     [self shoot];
 }
 
@@ -112,21 +105,21 @@ typedef NS_ENUM(NSInteger, EnemyState) {
             _lastKnownPosition.y == _previousKnownPosition.y);
 }
 
-
-
 #pragma mark - Robot Actions
 
 - (void)showdown {
+    NSLog(@"Showdown");
     [self aimAtPosition:_lastKnownPosition];
     [self shoot];
 }
 
 - (void)fireAhead {
-    if ([self timeSinceLastScan] < 1000) {
-        CGPoint guessPoint = CGPointMake(_lastKnownPosition.x -_enemySlope, _lastKnownPosition.y - _enemySlope);
-        [self aimAtPosition:guessPoint];
-        NSLog(@"%f, %f", guessPoint.x, guessPoint.y);
-        [self shoot];
+    CGPoint guessPoint = CGPointMake(_lastKnownPosition.x -_enemySlope, _lastKnownPosition.y - _enemySlope);
+    [self aimAtPosition:guessPoint];
+    [self shoot];
+    _shotsFired++;
+    if (_shotsFired > 2) {
+        _lastKnownPosition.x = _lastKnownPosition.x - (self.headingDirection.x *20);
     }
 }
 
@@ -139,21 +132,6 @@ typedef NS_ENUM(NSInteger, EnemyState) {
     }
 }
 
-- (void)circleStrafeBasicRight {
-    _lastPositionState = RobotPositionStateDefault;
-    [self moveAhead:24];
-    [self turnRobotRight:10];
-    _currentPositionState = RobotPositionStateCircle;
-}
-
-- (void)defaultChargeToWall {
-    [self moveAhead:500];
-    [self turnRobotRight:90];
-    [self moveAhead:40];
-    _currentPositionState = RobotPositionStateCircle;
-}
-
-
 #pragma mark - World Information
 
 - (CGPoint)myCenterPoint {
@@ -161,8 +139,9 @@ typedef NS_ENUM(NSInteger, EnemyState) {
 }
 
 - (CGPoint)arenaCenterPoint {
-    CGRect arenaRect = CGRectMake(0,0,[self arenaDimensions].width, [self arenaDimensions].height);
-    return [self centerPointof:arenaRect];
+    CGFloat x = [self arenaDimensions].width / 2;
+    CGFloat y = [self arenaDimensions].height / 2;
+    return CGPointMake(x, y);
 }
 
 - (CGPoint)centerPointof:(CGRect)rect {
@@ -176,8 +155,9 @@ typedef NS_ENUM(NSInteger, EnemyState) {
     return distanceBetweenDates *1000;
 }
 
-
-
-
-
+- (CGPoint)arenaPointFromDirection:(CGPoint)point {
+    CGFloat x = [self arenaDimensions].width/2 * point.x;
+    CGFloat y = [self arenaDimensions].height/2 * point.y;
+    return CGPointMake(x,y);
+}
 @end
