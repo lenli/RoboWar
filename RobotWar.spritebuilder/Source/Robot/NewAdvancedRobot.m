@@ -35,7 +35,7 @@
 - (void)performNextDefaultAction {
   switch (actionIndex%1) {
     case 0:
-      [self moveAhead:100];
+      [self moveAhead:200];
       break;
   }
   actionIndex++;

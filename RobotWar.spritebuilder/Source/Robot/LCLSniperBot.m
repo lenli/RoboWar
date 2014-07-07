@@ -67,6 +67,7 @@ typedef NS_ENUM(NSInteger, RobotAimPosition) {
         
         switch (_currentPositionState) {
             case RobotPositionStateDefault:
+                [self shoot];
                 _lastPositionState = RobotPositionStateDefault;
                 [self getArenaData];
                 _lastKnownPosition = _arenaCenter;
@@ -76,7 +77,7 @@ typedef NS_ENUM(NSInteger, RobotAimPosition) {
                 break;
             case RobotPositionStateBackingUpToWall:
                 _lastPositionState = RobotPositionStateBackingUpToWall;
-                [self moveBack:10];
+                [self moveBack:5];
                 break;
             case RobotPositionStateMoving:
                 [self moveAhead:10];
@@ -171,8 +172,10 @@ typedef NS_ENUM(NSInteger, RobotAimPosition) {
     switch (hitDirection) {
         case RobotWallHitDirectionFront:
             [self turnRobotLeft:90];
-            [self aimAtPosition:_arenaCenter];
-            _currentAimAngle = RobotAimAngle45;
+            if (_enemyPositionState == EnemyPositionUnknown) {
+                [self aimAtPosition:_arenaCenter];
+                _currentAimAngle = RobotAimAngle45;
+            }
             break;
         case RobotWallHitDirectionRear:
             break;
