@@ -187,9 +187,6 @@
             [self aimAtPosition:_arenaCenter];
         }
     }
-    if ([self enemyNotMoving]) {
-        [self shoot];
-    }
 }
 
 
