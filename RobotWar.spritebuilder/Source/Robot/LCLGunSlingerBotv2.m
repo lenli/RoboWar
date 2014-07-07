@@ -1,12 +1,12 @@
 //
-//  LCLTestBot.m
+//  LCLCowardlyBot.m
 //  RobotWar
 //
-//  Created by Leonard Li on 7/4/14.
+//  Created by Leonard Li on 7/3/14.
 //  Copyright (c) 2014 Apportable. All rights reserved.
 //
 
-#import "LCLTestBot.h"
+#import "LCLGunslingerBotv2.h"
 
 typedef NS_ENUM(NSInteger, RobotPositionState) {
     RobotPositionStateDefault,
@@ -19,7 +19,7 @@ typedef NS_ENUM(NSInteger, EnemyPositionState) {
     EnemyPositionKnown
 };
 
-@implementation LCLTestBot {
+@implementation LCLGunslingerBotv2 {
     RobotPositionState _lastPositionState;
     RobotPositionState _currentPositionState;
     NSInteger _myHitCount;
@@ -178,7 +178,6 @@ typedef NS_ENUM(NSInteger, EnemyPositionState) {
     return [self currentTimestamp] - _lastKnownPositionTimestamp;
 }
 
-
 - (NSInteger)timeSinceLastShotTaken {
     return [self currentTimestamp] - _lastShotTimeStamp;
 }
@@ -190,9 +189,19 @@ typedef NS_ENUM(NSInteger, EnemyPositionState) {
 }
 
 - (void)makeLastPositionCenter {
-    _lastKnownPosition = [self arenaCenterPoint];
+    CGFloat x = 0;
+    CGFloat y = 0;
+    while (x ==0) {
+        x = self.arenaDimensions.width / 2;
+    }
+    while (y == 0) {
+        y = self.arenaDimensions.height / 2;
+    }
+    _lastKnownPosition = CGPointMake(x,y);
+    NSLog(@"%f, %f", _lastKnownPosition.x, _lastKnownPosition.y);
     _previousKnownPosition = _lastKnownPosition;
     [self aimAtPosition:_lastKnownPosition];
 }
+
 
 @end

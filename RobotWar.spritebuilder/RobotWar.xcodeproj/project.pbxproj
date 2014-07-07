@@ -17,6 +17,10 @@
 		871CE4F31966285B002E61F5 /* LCLGunslingerBot.m in Sources */ = {isa = PBXBuildFile; fileRef = 871CE4F21966285B002E61F5 /* LCLGunslingerBot.m */; };
 		871CE4FA19670519002E61F5 /* LCLSniperBot.m in Sources */ = {isa = PBXBuildFile; fileRef = 871CE4F919670519002E61F5 /* LCLSniperBot.m */; };
 		871CE4FD19671611002E61F5 /* LCLTestBot.m in Sources */ = {isa = PBXBuildFile; fileRef = 871CE4FC19671611002E61F5 /* LCLTestBot.m */; };
+		876E90F3196750D0007C0AF1 /* LCLGunSlingerBotv2.m in Sources */ = {isa = PBXBuildFile; fileRef = 876E90F2196750D0007C0AF1 /* LCLGunSlingerBotv2.m */; };
+		876E90FB1967560D007C0AF1 /* AwesomeBestRobot.m in Sources */ = {isa = PBXBuildFile; fileRef = 876E90FA1967560D007C0AF1 /* AwesomeBestRobot.m */; };
+		876E910119675737007C0AF1 /* GeniusRobot.m in Sources */ = {isa = PBXBuildFile; fileRef = 876E910019675737007C0AF1 /* GeniusRobot.m */; };
+		876E91041967599D007C0AF1 /* MasterRobot.m in Sources */ = {isa = PBXBuildFile; fileRef = 876E91031967599D007C0AF1 /* MasterRobot.m */; };
 		B71F5911188484E7003F4D28 /* iPad-old.png in Resources */ = {isa = PBXBuildFile; fileRef = B71F5907188484E7003F4D28 /* iPad-old.png */; };
 		B71F5912188484E7003F4D28 /* iPad-old@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = B71F5908188484E7003F4D28 /* iPad-old@2x.png */; };
 		B71F5913188484E7003F4D28 /* iPad.png in Resources */ = {isa = PBXBuildFile; fileRef = B71F5909188484E7003F4D28 /* iPad.png */; };
@@ -88,6 +92,14 @@
 		871CE4F919670519002E61F5 /* LCLSniperBot.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = LCLSniperBot.m; path = Source/Robot/LCLSniperBot.m; sourceTree = "<group>"; };
 		871CE4FB19671611002E61F5 /* LCLTestBot.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = LCLTestBot.h; path = Source/Robot/LCLTestBot.h; sourceTree = "<group>"; };
 		871CE4FC19671611002E61F5 /* LCLTestBot.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = LCLTestBot.m; path = Source/Robot/LCLTestBot.m; sourceTree = "<group>"; };
+		876E90F2196750D0007C0AF1 /* LCLGunSlingerBotv2.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = LCLGunSlingerBotv2.m; path = Source/Robot/LCLGunSlingerBotv2.m; sourceTree = "<group>"; };
+		876E90F519675105007C0AF1 /* LCLGunslingerBotv2.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = LCLGunslingerBotv2.h; path = Source/Robot/LCLGunslingerBotv2.h; sourceTree = "<group>"; };
+		876E90F91967560D007C0AF1 /* AwesomeBestRobot.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AwesomeBestRobot.h; path = Source/Robot/AwesomeBestRobot.h; sourceTree = "<group>"; };
+		876E90FA1967560D007C0AF1 /* AwesomeBestRobot.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AwesomeBestRobot.m; path = Source/Robot/AwesomeBestRobot.m; sourceTree = "<group>"; };
+		876E90FF19675737007C0AF1 /* GeniusRobot.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GeniusRobot.h; path = Source/Robot/GeniusRobot.h; sourceTree = "<group>"; };
+		876E910019675737007C0AF1 /* GeniusRobot.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GeniusRobot.m; path = Source/Robot/GeniusRobot.m; sourceTree = "<group>"; };
+		876E91021967599D007C0AF1 /* MasterRobot.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MasterRobot.h; path = Source/Robot/MasterRobot.h; sourceTree = "<group>"; };
+		876E91031967599D007C0AF1 /* MasterRobot.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MasterRobot.m; path = Source/Robot/MasterRobot.m; sourceTree = "<group>"; };
 		B71F5907188484E7003F4D28 /* iPad-old.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "iPad-old.png"; path = "Icons/iPad-old.png"; sourceTree = "<group>"; };
 		B71F5908188484E7003F4D28 /* iPad-old@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "iPad-old@2x.png"; path = "Icons/iPad-old@2x.png"; sourceTree = "<group>"; };
 		B71F5909188484E7003F4D28 /* iPad.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = iPad.png; path = Icons/iPad.png; sourceTree = "<group>"; };
@@ -153,18 +165,15 @@
 		624A3882193E7AF90054705C /* Robots */ = {
 			isa = PBXGroup;
 			children = (
+				876E910519684949007C0AF1 /* Enemies */,
 				871CE4F11966285B002E61F5 /* LCLGunslingerBot.h */,
 				871CE4F21966285B002E61F5 /* LCLGunslingerBot.m */,
+				876E90F519675105007C0AF1 /* LCLGunslingerBotv2.h */,
+				876E90F2196750D0007C0AF1 /* LCLGunSlingerBotv2.m */,
 				871CE4FB19671611002E61F5 /* LCLTestBot.h */,
 				871CE4FC19671611002E61F5 /* LCLTestBot.m */,
 				871CE4F819670519002E61F5 /* LCLSniperBot.h */,
 				871CE4F919670519002E61F5 /* LCLSniperBot.m */,
-				65CC9158196141CF00838899 /* TurretRobot.h */,
-				65CC9159196141CF00838899 /* TurretRobot.m */,
-				BC7636F6195BBCAA0070222B /* AdvancedRobot.h */,
-				BC7636F7195BBCAA0070222B /* AdvancedRobot.m */,
-				BC7636F8195BBCAA0070222B /* SimpleRobot.h */,
-				BC7636F9195BBCAA0070222B /* SimpleRobot.m */,
 			);
 			name = Robots;
 			sourceTree = "<group>";
@@ -190,6 +199,25 @@
 				62C4F42F194141DE0047553C /* Helpers.m */,
 			);
 			name = Engine;
+			sourceTree = "<group>";
+		};
+		876E910519684949007C0AF1 /* Enemies */ = {
+			isa = PBXGroup;
+			children = (
+				876E90F91967560D007C0AF1 /* AwesomeBestRobot.h */,
+				876E90FA1967560D007C0AF1 /* AwesomeBestRobot.m */,
+				876E91021967599D007C0AF1 /* MasterRobot.h */,
+				876E91031967599D007C0AF1 /* MasterRobot.m */,
+				65CC9158196141CF00838899 /* TurretRobot.h */,
+				65CC9159196141CF00838899 /* TurretRobot.m */,
+				BC7636F6195BBCAA0070222B /* AdvancedRobot.h */,
+				BC7636F7195BBCAA0070222B /* AdvancedRobot.m */,
+				BC7636F8195BBCAA0070222B /* SimpleRobot.h */,
+				BC7636F9195BBCAA0070222B /* SimpleRobot.m */,
+				876E90FF19675737007C0AF1 /* GeniusRobot.h */,
+				876E910019675737007C0AF1 /* GeniusRobot.m */,
+			);
+			name = Enemies;
 			sourceTree = "<group>";
 		};
 		9222E2B918734FF800A246C7 /* libs */ = {
@@ -401,7 +429,9 @@
 			files = (
 				6236628E19612C5500ECB220 /* AdvancedRobot.m in Sources */,
 				629FCFF4193E71C300896E8C /* GameOverScene.m in Sources */,
+				876E90FB1967560D007C0AF1 /* AwesomeBestRobot.m in Sources */,
 				6244629A1937DDD300895F2D /* Robot.m in Sources */,
+				876E91041967599D007C0AF1 /* MasterRobot.m in Sources */,
 				BC7636FB195BBCAA0070222B /* SimpleRobot.m in Sources */,
 				B737893F1807617C0076A88C /* AppDelegate.m in Sources */,
 				871CE4FD19671611002E61F5 /* LCLTestBot.m in Sources */,
@@ -410,8 +440,10 @@
 				871CE4F31966285B002E61F5 /* LCLGunslingerBot.m in Sources */,
 				65CC915A196141CF00838899 /* TurretRobot.m in Sources */,
 				62C4F430194141DE0047553C /* Helpers.m in Sources */,
+				876E90F3196750D0007C0AF1 /* LCLGunSlingerBotv2.m in Sources */,
 				62E3A32419397BE400BD3F0F /* RobotAction.m in Sources */,
 				871CE4FA19670519002E61F5 /* LCLSniperBot.m in Sources */,
+				876E910119675737007C0AF1 /* GeniusRobot.m in Sources */,
 				62E3A330193D3F3B00BD3F0F /* Bullet.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
