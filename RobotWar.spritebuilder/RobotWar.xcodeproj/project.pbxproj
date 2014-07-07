@@ -15,9 +15,7 @@
 		65CC917D19648EEE00838899 /* AdvancedRobot.m in Sources */ = {isa = PBXBuildFile; fileRef = 65CC917819648EEE00838899 /* AdvancedRobot.m */; };
 		65CC917E19648EEE00838899 /* SimpleRobot.m in Sources */ = {isa = PBXBuildFile; fileRef = 65CC917A19648EEE00838899 /* SimpleRobot.m */; };
 		65CC917F19648EEE00838899 /* TurretRobot.m in Sources */ = {isa = PBXBuildFile; fileRef = 65CC917C19648EEE00838899 /* TurretRobot.m */; };
-		8736E0F8196ADF4C003EF568 /* LCLGunSlingerBotv2.m in Sources */ = {isa = PBXBuildFile; fileRef = 8736E0F5196ADF4C003EF568 /* LCLGunSlingerBotv2.m */; };
-		8736E0F9196ADF4C003EF568 /* LCLSniperBot.m in Sources */ = {isa = PBXBuildFile; fileRef = 8736E0F7196ADF4C003EF568 /* LCLSniperBot.m */; };
-		8736E100196AFA76003EF568 /* LCLLockdown.m in Sources */ = {isa = PBXBuildFile; fileRef = 8736E0FF196AFA76003EF568 /* LCLLockdown.m */; };
+		8736E105196B220E003EF568 /* LCLLockdown.m in Sources */ = {isa = PBXBuildFile; fileRef = 8736E104196B220E003EF568 /* LCLLockdown.m */; };
 		B71F5911188484E7003F4D28 /* iPad-old.png in Resources */ = {isa = PBXBuildFile; fileRef = B71F5907188484E7003F4D28 /* iPad-old.png */; };
 		B71F5912188484E7003F4D28 /* iPad-old@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = B71F5908188484E7003F4D28 /* iPad-old@2x.png */; };
 		B71F5913188484E7003F4D28 /* iPad.png in Resources */ = {isa = PBXBuildFile; fileRef = B71F5909188484E7003F4D28 /* iPad.png */; };
@@ -47,6 +45,7 @@
 		B77F1B4017B978D7009739AE /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B77F1B3F17B978D7009739AE /* CoreGraphics.framework */; };
 		B77F1B4217B978D7009739AE /* CoreText.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B77F1B4117B978D7009739AE /* CoreText.framework */; };
 		BC0E62DC196A0CB600AED4CF /* NewAdvancedRobot.m in Sources */ = {isa = PBXBuildFile; fileRef = BC0E62DB196A0CB600AED4CF /* NewAdvancedRobot.m */; };
+		BC717229196AF978002FCF86 /* LiveRobot.m in Sources */ = {isa = PBXBuildFile; fileRef = BC717228196AF978002FCF86 /* LiveRobot.m */; };
 		BCA5F346195BD4DA00F1A2DF /* GLKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BCA5F345195BD4DA00F1A2DF /* GLKit.framework */; };
 /* End PBXBuildFile section */
 
@@ -87,12 +86,8 @@
 		65CC917A19648EEE00838899 /* SimpleRobot.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SimpleRobot.m; sourceTree = "<group>"; };
 		65CC917B19648EEE00838899 /* TurretRobot.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TurretRobot.h; sourceTree = "<group>"; };
 		65CC917C19648EEE00838899 /* TurretRobot.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TurretRobot.m; sourceTree = "<group>"; };
-		8736E0F4196ADF4C003EF568 /* LCLGunslingerBotv2.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LCLGunslingerBotv2.h; sourceTree = "<group>"; };
-		8736E0F5196ADF4C003EF568 /* LCLGunSlingerBotv2.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LCLGunSlingerBotv2.m; sourceTree = "<group>"; };
-		8736E0F6196ADF4C003EF568 /* LCLSniperBot.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LCLSniperBot.h; sourceTree = "<group>"; };
-		8736E0F7196ADF4C003EF568 /* LCLSniperBot.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LCLSniperBot.m; sourceTree = "<group>"; };
-		8736E0FE196AFA76003EF568 /* LCLLockdown.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LCLLockdown.h; sourceTree = "<group>"; };
-		8736E0FF196AFA76003EF568 /* LCLLockdown.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LCLLockdown.m; sourceTree = "<group>"; };
+		8736E103196B220E003EF568 /* LCLLockdown.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LCLLockdown.h; sourceTree = "<group>"; };
+		8736E104196B220E003EF568 /* LCLLockdown.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LCLLockdown.m; sourceTree = "<group>"; };
 		B71F5907188484E7003F4D28 /* iPad-old.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "iPad-old.png"; path = "Icons/iPad-old.png"; sourceTree = "<group>"; };
 		B71F5908188484E7003F4D28 /* iPad-old@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "iPad-old@2x.png"; path = "Icons/iPad-old@2x.png"; sourceTree = "<group>"; };
 		B71F5909188484E7003F4D28 /* iPad.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = iPad.png; path = Icons/iPad.png; sourceTree = "<group>"; };
@@ -128,6 +123,8 @@
 		B7B3713D180358F1007369CC /* libObjectiveChipmunk.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libObjectiveChipmunk.a; path = "../libs/cocos2d-iphone/external/Chipmunk/xcode/build/Debug-iphoneos/libObjectiveChipmunk.a"; sourceTree = "<group>"; };
 		BC0E62DA196A0CB600AED4CF /* NewAdvancedRobot.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NewAdvancedRobot.h; sourceTree = "<group>"; };
 		BC0E62DB196A0CB600AED4CF /* NewAdvancedRobot.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NewAdvancedRobot.m; sourceTree = "<group>"; };
+		BC717227196AF978002FCF86 /* LiveRobot.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LiveRobot.h; sourceTree = "<group>"; };
+		BC717228196AF978002FCF86 /* LiveRobot.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LiveRobot.m; sourceTree = "<group>"; };
 		BCA5F345195BD4DA00F1A2DF /* GLKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GLKit.framework; path = System/Library/Frameworks/GLKit.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
@@ -180,8 +177,6 @@
 		65CC917619648EEE00838899 /* Robots */ = {
 			isa = PBXGroup;
 			children = (
-				8736E0FE196AFA76003EF568 /* LCLLockdown.h */,
-				8736E0FF196AFA76003EF568 /* LCLLockdown.m */,
 				65CC917719648EEE00838899 /* AdvancedRobot.h */,
 				65CC917819648EEE00838899 /* AdvancedRobot.m */,
 				65CC917919648EEE00838899 /* SimpleRobot.h */,
@@ -190,10 +185,10 @@
 				65CC917C19648EEE00838899 /* TurretRobot.m */,
 				BC0E62DA196A0CB600AED4CF /* NewAdvancedRobot.h */,
 				BC0E62DB196A0CB600AED4CF /* NewAdvancedRobot.m */,
-				8736E0F4196ADF4C003EF568 /* LCLGunslingerBotv2.h */,
-				8736E0F5196ADF4C003EF568 /* LCLGunSlingerBotv2.m */,
-				8736E0F6196ADF4C003EF568 /* LCLSniperBot.h */,
-				8736E0F7196ADF4C003EF568 /* LCLSniperBot.m */,
+				BC717227196AF978002FCF86 /* LiveRobot.h */,
+				BC717228196AF978002FCF86 /* LiveRobot.m */,
+				8736E103196B220E003EF568 /* LCLLockdown.h */,
+				8736E104196B220E003EF568 /* LCLLockdown.m */,
 			);
 			name = Robots;
 			path = Source/Robot;
@@ -405,21 +400,20 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				8736E100196AFA76003EF568 /* LCLLockdown.m in Sources */,
 				629FCFF4193E71C300896E8C /* GameOverScene.m in Sources */,
+				BC717229196AF978002FCF86 /* LiveRobot.m in Sources */,
+				8736E105196B220E003EF568 /* LCLLockdown.m in Sources */,
 				6244629A1937DDD300895F2D /* Robot.m in Sources */,
 				65CC917E19648EEE00838899 /* SimpleRobot.m in Sources */,
 				B737893F1807617C0076A88C /* AppDelegate.m in Sources */,
 				B7378994180767190076A88C /* MainScene.m in Sources */,
 				B73789871807631A0076A88C /* main.m in Sources */,
-				8736E0F9196ADF4C003EF568 /* LCLSniperBot.m in Sources */,
 				62C4F430194141DE0047553C /* Helpers.m in Sources */,
 				65CC917F19648EEE00838899 /* TurretRobot.m in Sources */,
 				65CC917D19648EEE00838899 /* AdvancedRobot.m in Sources */,
 				62E3A32419397BE400BD3F0F /* RobotAction.m in Sources */,
 				62E3A330193D3F3B00BD3F0F /* Bullet.m in Sources */,
 				BC0E62DC196A0CB600AED4CF /* NewAdvancedRobot.m in Sources */,
-				8736E0F8196ADF4C003EF568 /* LCLGunSlingerBotv2.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

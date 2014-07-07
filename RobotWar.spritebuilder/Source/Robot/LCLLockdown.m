@@ -123,7 +123,11 @@
     
     CGFloat halfway = abs(self.headingDirection.x*_arenaWidth/2) + abs(self.headingDirection.y*_arenaHeight/2);
     if ([self distanceFromWall] < halfway && _shotsFired > 2 && self.myAimState == RobotAimState45) {
-        [self aimAtPosition:_arenaCenter];
+        CGFloat x = abs([self headingDirection].x * [self position].x) +
+        abs(abs([self headingDirection].x)-1)*_arenaCenter.x;
+        CGFloat y = abs([self headingDirection].y * [self position].y) +
+        abs(abs([self headingDirection].y)-1)*_arenaCenter.y;
+        [self aimAtPosition:CGPointMake(x, y)];
         self.myAimState = RobotAimState90;
     }
     
@@ -235,11 +239,14 @@
         _arenaCenter.x = _arenaWidth / 2;
         _arenaCenter.y = _arenaHeight / 2;
     }
+    NSLog(@"Arena Center: %f, %f", _arenaCenter.x, _arenaCenter.y);
     while (_arenaRect.size.width == 0 && _arenaRect.size.height == 0) {
         CGFloat width = [self arenaDimensions].width;
         CGFloat height = [self arenaDimensions].height;
         _arenaRect = CGRectMake(0, 0, width, height);
     }
+    NSLog(@"Arena Size: %f, %f", _arenaWidth, _arenaHeight);
+
     if (EnemyPositionUnknown) {
         _lastKnownPosition = _arenaCenter;
     }
@@ -257,8 +264,8 @@
     CGFloat wallX = (self.headingDirection.x * _arenaCenter.x) + _arenaCenter.x;
     CGFloat wallY = (self.headingDirection.y * _arenaCenter.y) + _arenaCenter.y;
     
-    CGFloat distanceX = self.position.x - wallX;
-    CGFloat distanceY = self.position.y - wallY;
+    CGFloat distanceX = [self position].x - wallX;
+    CGFloat distanceY = [self position].y - wallY;
     CGFloat distance = abs(self.headingDirection.x * distanceX) + abs(self.headingDirection.y * distanceY);
     return distance;
 }
