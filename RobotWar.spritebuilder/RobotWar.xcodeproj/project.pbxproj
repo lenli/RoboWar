@@ -16,6 +16,9 @@
 		65CC917E19648EEE00838899 /* SimpleRobot.m in Sources */ = {isa = PBXBuildFile; fileRef = 65CC917A19648EEE00838899 /* SimpleRobot.m */; };
 		65CC917F19648EEE00838899 /* TurretRobot.m in Sources */ = {isa = PBXBuildFile; fileRef = 65CC917C19648EEE00838899 /* TurretRobot.m */; };
 		8736E105196B220E003EF568 /* LCLLockdown.m in Sources */ = {isa = PBXBuildFile; fileRef = 8736E104196B220E003EF568 /* LCLLockdown.m */; };
+		875F6FE2196B9A8F0068FE7D /* LCLGunslingerBotv2.m in Sources */ = {isa = PBXBuildFile; fileRef = 875F6FE1196B9A8F0068FE7D /* LCLGunslingerBotv2.m */; };
+		875F6FE8196B9B390068FE7D /* LCLGunslingerBot.m in Sources */ = {isa = PBXBuildFile; fileRef = 875F6FE5196B9B390068FE7D /* LCLGunslingerBot.m */; };
+		875F6FE9196B9B390068FE7D /* LCLSniperBot.m in Sources */ = {isa = PBXBuildFile; fileRef = 875F6FE7196B9B390068FE7D /* LCLSniperBot.m */; };
 		B71F5911188484E7003F4D28 /* iPad-old.png in Resources */ = {isa = PBXBuildFile; fileRef = B71F5907188484E7003F4D28 /* iPad-old.png */; };
 		B71F5912188484E7003F4D28 /* iPad-old@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = B71F5908188484E7003F4D28 /* iPad-old@2x.png */; };
 		B71F5913188484E7003F4D28 /* iPad.png in Resources */ = {isa = PBXBuildFile; fileRef = B71F5909188484E7003F4D28 /* iPad.png */; };
@@ -88,6 +91,12 @@
 		65CC917C19648EEE00838899 /* TurretRobot.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TurretRobot.m; sourceTree = "<group>"; };
 		8736E103196B220E003EF568 /* LCLLockdown.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LCLLockdown.h; sourceTree = "<group>"; };
 		8736E104196B220E003EF568 /* LCLLockdown.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LCLLockdown.m; sourceTree = "<group>"; };
+		875F6FE0196B9A8F0068FE7D /* LCLGunslingerBotv2.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LCLGunslingerBotv2.h; sourceTree = "<group>"; };
+		875F6FE1196B9A8F0068FE7D /* LCLGunslingerBotv2.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LCLGunslingerBotv2.m; sourceTree = "<group>"; };
+		875F6FE4196B9B390068FE7D /* LCLGunslingerBot.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LCLGunslingerBot.h; sourceTree = "<group>"; };
+		875F6FE5196B9B390068FE7D /* LCLGunslingerBot.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LCLGunslingerBot.m; sourceTree = "<group>"; };
+		875F6FE6196B9B390068FE7D /* LCLSniperBot.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LCLSniperBot.h; sourceTree = "<group>"; };
+		875F6FE7196B9B390068FE7D /* LCLSniperBot.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LCLSniperBot.m; sourceTree = "<group>"; };
 		B71F5907188484E7003F4D28 /* iPad-old.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "iPad-old.png"; path = "Icons/iPad-old.png"; sourceTree = "<group>"; };
 		B71F5908188484E7003F4D28 /* iPad-old@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "iPad-old@2x.png"; path = "Icons/iPad-old@2x.png"; sourceTree = "<group>"; };
 		B71F5909188484E7003F4D28 /* iPad.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = iPad.png; path = Icons/iPad.png; sourceTree = "<group>"; };
@@ -177,6 +186,12 @@
 		65CC917619648EEE00838899 /* Robots */ = {
 			isa = PBXGroup;
 			children = (
+				875F6FE4196B9B390068FE7D /* LCLGunslingerBot.h */,
+				875F6FE5196B9B390068FE7D /* LCLGunslingerBot.m */,
+				875F6FE6196B9B390068FE7D /* LCLSniperBot.h */,
+				875F6FE7196B9B390068FE7D /* LCLSniperBot.m */,
+				875F6FE0196B9A8F0068FE7D /* LCLGunslingerBotv2.h */,
+				875F6FE1196B9A8F0068FE7D /* LCLGunslingerBotv2.m */,
 				65CC917719648EEE00838899 /* AdvancedRobot.h */,
 				65CC917819648EEE00838899 /* AdvancedRobot.m */,
 				65CC917919648EEE00838899 /* SimpleRobot.h */,
@@ -328,7 +343,7 @@
 				ORGANIZATIONNAME = MakeGamesWithUs;
 				TargetAttributes = {
 					B77F1B2D17B978D7009739AE = {
-						DevelopmentTeam = SBVP8ED765;
+						DevelopmentTeam = D3R2N4L8FQ;
 						SystemCapabilities = {
 							com.apple.GameCenter = {
 								enabled = 0;
@@ -405,11 +420,14 @@
 				8736E105196B220E003EF568 /* LCLLockdown.m in Sources */,
 				6244629A1937DDD300895F2D /* Robot.m in Sources */,
 				65CC917E19648EEE00838899 /* SimpleRobot.m in Sources */,
+				875F6FE2196B9A8F0068FE7D /* LCLGunslingerBotv2.m in Sources */,
 				B737893F1807617C0076A88C /* AppDelegate.m in Sources */,
 				B7378994180767190076A88C /* MainScene.m in Sources */,
 				B73789871807631A0076A88C /* main.m in Sources */,
 				62C4F430194141DE0047553C /* Helpers.m in Sources */,
 				65CC917F19648EEE00838899 /* TurretRobot.m in Sources */,
+				875F6FE8196B9B390068FE7D /* LCLGunslingerBot.m in Sources */,
+				875F6FE9196B9B390068FE7D /* LCLSniperBot.m in Sources */,
 				65CC917D19648EEE00838899 /* AdvancedRobot.m in Sources */,
 				62E3A32419397BE400BD3F0F /* RobotAction.m in Sources */,
 				62E3A330193D3F3B00BD3F0F /* Bullet.m in Sources */,
@@ -515,7 +533,7 @@
 					"-ObjC",
 				);
 				PRODUCT_NAME = RobotWar;
-				PROVISIONING_PROFILE = "18D84403-392D-4C50-BA7D-C45F153D06AB";
+				PROVISIONING_PROFILE = "";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -546,7 +564,7 @@
 					"-ObjC",
 				);
 				PRODUCT_NAME = RobotWar;
-				PROVISIONING_PROFILE = "18D84403-392D-4C50-BA7D-C45F153D06AB";
+				PROVISIONING_PROFILE = "";
 				VALIDATE_PRODUCT = YES;
 				WRAPPER_EXTENSION = app;
 			};

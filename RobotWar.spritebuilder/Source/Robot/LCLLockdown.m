@@ -37,7 +37,6 @@
 - (void)run {
     actionIndex = 0;
     while (true) {
-        NSLog(@"Enemy State: %d", self.enemyState);
         if ([self timeSinceLastScan] > 2) {
             self.enemyState = EnemyPositionUnknown;
         }
@@ -62,6 +61,7 @@
         case 0:
             if ([self timeSinceLastScan] > 2) {
                 self.enemyState = EnemyPositionUnknown;
+                [self aimReset];
             }
             break;
         case 1:
@@ -78,7 +78,7 @@
             }
             break;
         case 4:
-            [self fireAhead];
+            [self fire];
             break;
     }
     actionIndex++;
@@ -90,7 +90,7 @@
             [self aimAtPosition:_lastKnownPosition];
             break;
         case 1:
-            [self fireAhead];
+            [self fire];
             break;
     }
     actionIndex++;
@@ -114,24 +114,31 @@
 
 #pragma mark - Robot Actions
 
-- (void)fireAhead {
+- (void)fire {
     _shotsFired++;
+    [self shoot];
+}
+
+- (void)aimReset {
+    CGFloat halfway = abs(self.headingDirection.x*_arenaWidth/2) + abs(self.headingDirection.y*_arenaHeight/2);
     if (self.enemyState == EnemyPositionKnown) {
         CGPoint guessPoint = CGPointMake(_lastKnownPosition.x -_enemySlope, _lastKnownPosition.y - _enemySlope);
         [self aimAtPosition:guessPoint];
+    } else if ([self distanceFromWall] < halfway && _shotsFired > 2 && self.myAimState == RobotAimState45) {
+        [self aimPerpendicular];
+    } else {
+        [self aimAtPosition:_arenaCenter];
+        self.myAimState = RobotAimState45;
     }
-    
-    CGFloat halfway = abs(self.headingDirection.x*_arenaWidth/2) + abs(self.headingDirection.y*_arenaHeight/2);
-    if ([self distanceFromWall] < halfway && _shotsFired > 2 && self.myAimState == RobotAimState45) {
-        CGFloat x = abs([self headingDirection].x * [self position].x) +
-        abs(abs([self headingDirection].x)-1)*_arenaCenter.x;
-        CGFloat y = abs([self headingDirection].y * [self position].y) +
-        abs(abs([self headingDirection].y)-1)*_arenaCenter.y;
-        [self aimAtPosition:CGPointMake(x, y)];
-        self.myAimState = RobotAimState90;
-    }
-    
-    [self shoot];
+}
+
+- (void)aimPerpendicular {
+    CGFloat x = abs([self headingDirection].x * [self position].x) +
+    abs(abs([self headingDirection].x)-1)*_arenaCenter.x;
+    CGFloat y = abs([self headingDirection].y * [self position].y) +
+    abs(abs([self headingDirection].y)-1)*_arenaCenter.y;
+    [self aimAtPosition:CGPointMake(x, y)];
+    self.myAimState = RobotAimState90;
 }
 
 - (void)aimAtPosition:(CGPoint)position {
@@ -146,7 +153,8 @@
 #pragma mark - Robot Override Methods
 
 - (void)hitWall:(RobotWallHitDirection)hitDirection hitAngle:(CGFloat)angle {
-    if (self.myState == RobotStateDefault) {
+    [self cancelActiveAction];
+    if (self.myState == RobotStateDefault && hitDirection == RobotWallHitDirectionRear) {
         [self turnRobotRight:90];
         if (self.enemyState == EnemyPositionKnown) {
             [self aimAtPosition:_lastKnownPosition];
@@ -154,24 +162,25 @@
             [self aimAtPosition:_arenaCenter];
         }
         self.myState = RobotStateSearching;
-    }
-    
-    switch (hitDirection) {
-        case RobotWallHitDirectionFront:
-            [self turnRobotLeft:90];
-            if (self.enemyState == EnemyPositionUnknown) {
-                [self aimAtPosition:_arenaCenter];
-                self.myAimState = RobotAimState45;
-            }
-            break;
-        default:
-            if (angle >= 0) {
-                [self turnRobotLeft:abs(angle)];
-            } else {
-                [self turnRobotRight:abs(angle)];
-                
-            }
-            break;
+    } else {
+        switch (hitDirection) {
+            case RobotWallHitDirectionFront:
+                [self turnRobotLeft:90];
+                if (self.enemyState == EnemyPositionKnown) {
+                    [self aimAtPosition:_lastKnownPosition];
+                } else {
+                    [self aimAtPosition:_arenaCenter];
+                }
+                break;
+            default:
+                if (angle >= 0) {
+                    [self turnRobotLeft:abs(angle)];
+                } else {
+                    [self turnRobotRight:abs(angle)];
+                    
+                }
+                break;
+        }
     }
 }
 
@@ -236,14 +245,11 @@
         _arenaCenter.x = _arenaWidth / 2;
         _arenaCenter.y = _arenaHeight / 2;
     }
-    NSLog(@"Arena Center: %f, %f", _arenaCenter.x, _arenaCenter.y);
     while (_arenaRect.size.width == 0 && _arenaRect.size.height == 0) {
         CGFloat width = [self arenaDimensions].width;
         CGFloat height = [self arenaDimensions].height;
         _arenaRect = CGRectMake(0, 0, width, height);
     }
-    NSLog(@"Arena Size: %f, %f", _arenaWidth, _arenaHeight);
-
     if (EnemyPositionUnknown) {
         _lastKnownPosition = _arenaCenter;
     }
