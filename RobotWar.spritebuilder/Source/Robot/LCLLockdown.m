@@ -105,7 +105,11 @@
     
     switch (actionIndex%1) {
         case 0:
-            [self moveBack:100];
+            if ([self distanceFromWall] > _arenaWidth/2) {
+                [self moveBack:(_arenaWidth - [self distanceFromWall])];
+            } else {
+                [self moveAhead:[self distanceFromWall]];
+            }
             break;
     }
     actionIndex++;
@@ -127,7 +131,7 @@
     }
     if ([self distanceFromWall] < halfway && _shotsFired > 2 && self.enemyState == EnemyPositionUnknown) {
         [self aimPerpendicular];
-    } 
+    }
 }
 
 - (void)aimPerpendicular {
@@ -168,6 +172,7 @@
                 } else {
                     [self aimAtPosition:_arenaCenter];
                 }
+                self.myState = RobotStateSearching;
                 break;
             default:
                 if (angle >= 0) {
