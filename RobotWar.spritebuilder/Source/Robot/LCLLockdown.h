@@ -12,11 +12,6 @@ typedef NS_ENUM(NSInteger, RobotState) {
     RobotStateSearching
 };
 
-typedef NS_ENUM(NSInteger, RobotAimState) {
-    RobotAimState45,
-    RobotAimState90
-};
-
 typedef NS_ENUM(NSInteger, EnemyPosition) {
     EnemyPositionUnknown,
     EnemyPositionKnown
@@ -26,7 +21,6 @@ typedef NS_ENUM(NSInteger, EnemyPosition) {
 
 @interface LCLLockdown : Robot
 @property (nonatomic, assign) RobotState myState;
-@property (nonatomic, assign) RobotAimState myAimState;
 @property (nonatomic, assign) EnemyPosition enemyState;
 
 @end

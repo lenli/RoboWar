@@ -124,12 +124,10 @@
     if (self.enemyState == EnemyPositionKnown) {
         CGPoint guessPoint = CGPointMake(_lastKnownPosition.x -_enemySlope, _lastKnownPosition.y - _enemySlope);
         [self aimAtPosition:guessPoint];
-    } else if ([self distanceFromWall] < halfway && _shotsFired > 2 && self.myAimState == RobotAimState45) {
-        [self aimPerpendicular];
-    } else {
-        [self aimAtPosition:_arenaCenter];
-        self.myAimState = RobotAimState45;
     }
+    if ([self distanceFromWall] < halfway && _shotsFired > 2 && self.enemyState == EnemyPositionUnknown) {
+        [self aimPerpendicular];
+    } 
 }
 
 - (void)aimPerpendicular {
@@ -138,7 +136,6 @@
     CGFloat y = abs([self headingDirection].y * [self position].y) +
     abs(abs([self headingDirection].y)-1)*_arenaCenter.y;
     [self aimAtPosition:CGPointMake(x, y)];
-    self.myAimState = RobotAimState90;
 }
 
 - (void)aimAtPosition:(CGPoint)position {
