@@ -37,7 +37,6 @@
 - (void)run {
     actionIndex = 0;
     while (true) {
-        NSLog(@"Enemy State: %d", self.enemyState);
         if ([self timeSinceLastScan] > 2) {
             self.enemyState = EnemyPositionUnknown;
         }
@@ -105,7 +104,11 @@
     
     switch (actionIndex%1) {
         case 0:
-            [self moveBack:100];
+            if ([self distanceFromWall] > _arenaWidth/2) {
+                [self moveBack:(_arenaWidth -[self distanceFromWall])];
+            } else {
+                [self moveAhead:[self distanceFromWall]];
+            }
             break;
     }
     actionIndex++;
@@ -236,13 +239,11 @@
         _arenaCenter.x = _arenaWidth / 2;
         _arenaCenter.y = _arenaHeight / 2;
     }
-    NSLog(@"Arena Center: %f, %f", _arenaCenter.x, _arenaCenter.y);
     while (_arenaRect.size.width == 0 && _arenaRect.size.height == 0) {
         CGFloat width = [self arenaDimensions].width;
         CGFloat height = [self arenaDimensions].height;
         _arenaRect = CGRectMake(0, 0, width, height);
     }
-    NSLog(@"Arena Size: %f, %f", _arenaWidth, _arenaHeight);
 
     if (EnemyPositionUnknown) {
         _lastKnownPosition = _arenaCenter;
